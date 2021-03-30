@@ -16,8 +16,6 @@ public class CaseMethods extends BasePage{
         buildAge
     }
 
-
-
     public CaseMethods(WebDriver driver){
         super(driver);
     }
