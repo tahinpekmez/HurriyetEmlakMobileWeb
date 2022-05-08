@@ -1,7 +1,48 @@
 package HurriyetEmlakWebMobile;
 
-public class Constant{
-    public static String homePage = "https://www.hurriyetemlak.com/";
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
+import java.util.Properties;
 
-    public String getMainPage(){ return homePage; }
+
+public class Constant {
+
+    private static final String PROPERTIES_FILE = "config.properties";
+    private Properties props = null;
+
+    public Constant() {
+        loadProperties(PROPERTIES_FILE);
+    }
+
+    private void loadProperties(String filename) {
+        props = new Properties();
+        InputStream stream;
+        stream = ClassLoader.getSystemResourceAsStream("config.properties");
+
+        if (stream == null) {
+            System.err.println("Unable to open properties file " + filename);
+            return;
+        }
+
+        try {
+            Reader reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
+            props.load(reader);
+        } catch (IOException e) {
+            System.err.println("Error reading properties file " + filename);
+            System.err.println(e.getMessage());
+        }
+
+        try {
+            stream.close();
+        } catch (IOException ioe) { }
+
+    }
+
+
+    public String getProperty(String name) {
+        return props.getProperty(name);
+    }
 }

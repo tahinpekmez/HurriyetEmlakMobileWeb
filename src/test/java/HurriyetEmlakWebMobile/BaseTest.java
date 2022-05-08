@@ -66,7 +66,7 @@ public class BaseTest {
             logger.fail(result.getThrowable().getMessage(), MediaEntityBuilder.createScreenCaptureFromBase64String(encodeString).build());
             driver.manage().deleteAllCookies();
             Constant constant = new Constant();
-            driver.get(constant.getMainPage());
+            driver.get(constant.getProperty("homePage"));
         }
 
 

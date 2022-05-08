@@ -21,10 +21,10 @@ public class CaseMethods extends BasePage{
     }
 
     public void caseFirst(){
-        driver.get(constant.getMainPage());
+        driver.get(constant.getProperty("homePage"));
         waitPageLoad();
 
-        if(driver.getCurrentUrl().equals(constant.getMainPage())){
+        if(driver.getCurrentUrl().equals(constant.getProperty("homePage"))){
             Assert.assertTrue(true);
         }
 
@@ -89,10 +89,10 @@ public class CaseMethods extends BasePage{
 
 
     public void caseSecond(){
-        driver.get(constant.getMainPage());
+        driver.get(constant.getProperty("homePage"));
         waitPageLoad();
 
-        if(driver.getCurrentUrl().equals(constant.getMainPage())){
+        if(driver.getCurrentUrl().equals(constant.getProperty("homePage"))){
             Assert.assertTrue(true);
         }
 
